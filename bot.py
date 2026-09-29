@@ -33,13 +33,13 @@ def get_updates():
         params["offset"] = OFFSET
 
     try:
-        r = requests.get(
+        response = requests.get(
             f"{API}/getUpdates",
             params=params,
             timeout=30
         )
 
-        data = r.json()
+        data = response.json()
 
         if not data.get("ok"):
             print("Telegram API error:", data)
@@ -72,20 +72,4 @@ def is_supported_url(url):
 def get_site_name(url):
     url = url.lower()
 
-    if "amazon." in url or "amzn.in" in url:
-        return "Amazon"
-
-    if "flipkart.com" in url:
-        return "Flipkart"
-
-    if "croma.com" in url:
-        return "Croma"
-
-    if "reliancedigital.in" in url:
-        return "Reliance Digital"
-
-    return "Unknown"
-
-
-def handle_message(message):
-    chat = message.get("chat", {})
+    if "amazon
